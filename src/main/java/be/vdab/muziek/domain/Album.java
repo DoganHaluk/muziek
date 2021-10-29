@@ -3,6 +3,7 @@ package be.vdab.muziek.domain;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
+import java.time.LocalTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.Collections;
@@ -19,11 +20,12 @@ public class Album {
     private String naam;
     @Range(min = 0, max = 10)
     private int score;
-    ElementCollection
+    @ElementCollection
     @CollectionTable(name = "tracks", joinColumns = @JoinColumn(name = "albumId"))
     private Set<Track> tracks;
 
     public Album(Artiest artiest, String naam, int score) {
+        setArtiest(artiest);
         this.naam = naam;
         this.score = score;
         this.tracks = new LinkedHashSet<>();
@@ -48,7 +50,27 @@ public class Album {
         return score;
     }
 
-    public Set<Track> getTracks(){
+    public void setArtiest(Artiest artiest) {
+        if (!artiest.getAlbums().contains(this)) {
+            artiest.add(this);
+        }
+        this.artiest = artiest;
+    }
+
+    public Set<Track> getTracks() {
         return Collections.unmodifiableSet(tracks);
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public LocalTime getTijd() {
+        LocalTime som = LocalTime.MIN;
+        for (var track : tracks) {
+            var tijd = track.getTijd();
+            som = som.plusHours(tijd.getHour()).plusMinutes(tijd.getMinute()).plusSeconds(tijd.getSecond());
+        }
+        return som;
     }
 }
