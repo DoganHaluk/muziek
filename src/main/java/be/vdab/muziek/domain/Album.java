@@ -10,7 +10,9 @@ import java.util.Collections;
 
 @Entity
 @Table(name = "albums")
+@NamedEntityGraph(name = Album.MET_ARTIEST, attributeNodes = @NamedAttributeNode("artiest"))
 public class Album {
+    public static final String MET_ARTIEST = "Album.metArtiest";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -23,6 +25,7 @@ public class Album {
     @ElementCollection
     @CollectionTable(name = "tracks", joinColumns = @JoinColumn(name = "albumId"))
     private Set<Track> tracks;
+
 
     public Album(Artiest artiest, String naam, int score) {
         setArtiest(artiest);
