@@ -1,0 +1,21 @@
+<div lang="nl" xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="head(title)">
+        <meta charset="UTF-8">
+        <title th:text="${title}"></title>
+        <link rel="icon" th:href="@{/images/albums.ico}" type="image/x-icon">
+        <link rel="stylesheet" th:href="@{/css/albums.css}">
+    </head>
+
+    <nav th:fragment="menu">
+        <h2>DE ALBUMS DIE MIJN LEVEN HEBBEN VERANDERD</h2>
+        <ul>
+            <li><a th:href="@{/}">Nieuw persoon toevoegen</a></li>
+            <li><a th:href="@{/}">Nieuw album toevoegen</a></li>
+        </ul>
+    </nav>
+
+    <footer th:fragment="footer">
+        <p>© 2021 Mijn Albums</p>
+        <p>Alle rechten voorbehouden <img th:src="@{/images/HD_logo.png}" height="10px"></p>
+    </footer>
+</div>

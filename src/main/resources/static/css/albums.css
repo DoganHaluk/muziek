@@ -1,0 +1,52 @@
+body {
+    background-color: oldlace;
+    font-family: sans-serif;
+}
+
+.fullwidth {
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    background-color: cadetblue;
+    justify-content: space-between;
+    padding: 0.5em;
+}
+
+nav h2 {
+    vertical-align: middle;
+    font-family: Chiller, serif;
+    font-size: xx-large;
+}
+
+nav ul {
+    margin-top: 2.5em;
+}
+
+nav li {
+    display: inline;
+}
+
+nav li a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0.5em;
+}
+
+nav li a:hover {
+    color: gold;
+}
+
+footer {
+    display: flex;
+    background-color: cadetblue;
+    justify-content: space-between;
+    padding: 0.5em;
+    font-size: x-small;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
