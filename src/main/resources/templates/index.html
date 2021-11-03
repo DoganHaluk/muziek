@@ -5,7 +5,7 @@
 <nav th:replace="fragments::menu"></nav>
 <ul class="albums">
     <li th:each="album:${albums}" th:object="${album}">
-        <a th:text="|*{naam} (*{artiest.naam})|" th:href="@{/albums/{naam}(naam=*{naam})}"></a>
+        <a th:text="|*{naam} (*{artiest.naam})|" th:href="@{/album/{id}(id=*{id})}"></a>
     </li>
 </ul>
 <footer th:replace="fragments::footer"></footer>

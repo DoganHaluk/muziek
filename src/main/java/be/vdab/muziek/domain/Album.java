@@ -26,7 +26,6 @@ public class Album {
     @CollectionTable(name = "tracks", joinColumns = @JoinColumn(name = "albumId"))
     private Set<Track> tracks;
 
-
     public Album(Artiest artiest, String naam, int score) {
         setArtiest(artiest);
         this.naam = naam;

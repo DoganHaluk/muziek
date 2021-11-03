@@ -14,9 +14,15 @@ nav {
     padding: 0.5em;
 }
 
-nav h2 {
+nav a:visited, a:link, a:active
+{
+    text-decoration: none;
+    color: black;
+}
+
+nav h1 {
     vertical-align: middle;
-    font-family: Chiller, serif;
+    font-family: Algerian, serif;
     font-size: xx-large;
 }
 
@@ -30,13 +36,16 @@ nav li {
 
 nav li a {
     color: white;
-    font-weight: bold;
-    text-decoration: none;
+    font-family: "Bauhaus 93", serif;
     padding: 0.5em;
 }
 
 nav li a:hover {
     color: gold;
+}
+
+p {
+    margin: 10px;
 }
 
 footer {
