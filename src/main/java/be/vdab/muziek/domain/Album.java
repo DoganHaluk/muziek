@@ -1,7 +1,5 @@
 package be.vdab.muziek.domain;
 
-import org.hibernate.validator.constraints.Range;
-
 import javax.persistence.*;
 import java.time.LocalTime;
 import java.util.LinkedHashSet;
@@ -20,7 +18,6 @@ public class Album {
     @JoinColumn(name = "artiestId")
     private Artiest artiest;
     private String naam;
-    @Range(min = 0, max = 10)
     private int score;
     @ElementCollection
     @CollectionTable(name = "tracks", joinColumns = @JoinColumn(name = "albumId"))

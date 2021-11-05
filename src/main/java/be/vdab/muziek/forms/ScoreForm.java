@@ -2,12 +2,7 @@ package be.vdab.muziek.forms;
 
 import org.hibernate.validator.constraints.Range;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
 public class ScoreForm {
-    @NotEmpty
-    @NotNull
     @Range(min = 0, max = 10)
     private final int score;
 
