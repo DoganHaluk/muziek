@@ -6,9 +6,9 @@
 <main>
     <h1 th:if="not ${album}" th:text="|Album ${id} niet gevonden.|"></h1>
     <div th:if="${album}" th:object="${album}">
-        <h1 th:text="|*{naam} (*{artiest.naam})|"></h1>
+        <h2 th:text="|*{artiest.naam} - *{naam}|"></h2>
         <ul>
-            <li th:each="track:*{tracks}" th:object="${track}" th:text="|*{naam} - *{tijd}|"></li>
+            <li th:each="track:*{tracks}" th:object="${track}" th:text="|*{naam} (*{tijd})|"></li>
         </ul>
         <div>Totale tijd:
             <th:block th:text="${album.tijd}"></th:block>
@@ -16,10 +16,10 @@
     </div>
     <form method="post" th:action="@{/album/{id}/score(id=${album.id})}" th:object="${scoreForm}">
         <label>Score:
-            <input th:field="*{score}" type="number" min="0" max="10">
+            <input th:field="*{score}" type="number" min="0" max="10" class="rounded">
             <span th:errors="*{score}"></span>
         </label>
-        <button>Wijzigen</button>
+        <button class="rounded">Wijzigen</button>
     </form>
 </main>
 <footer th:replace="fragments::footer"></footer>

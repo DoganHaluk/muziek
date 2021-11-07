@@ -6,7 +6,7 @@
 <main>
     <ul class="albums">
         <li th:each="album:${albums}" th:object="${album}">
-            <a th:text="|*{naam} (*{artiest.naam})|" th:href="@{/album/{id}(id=*{id})}"></a>
+            <a th:text="|*{artiest.naam} - *{naam}|" th:href="@{/album/{id}(id=*{id})}"></a>
         </li>
     </ul>
 </main>
