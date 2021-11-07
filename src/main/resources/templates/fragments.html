@@ -1,17 +1,38 @@
 <div lang="nl" xmlns:th="http://www.thymeleaf.org">
     <head th:fragment="head(title)">
         <meta charset="UTF-8">
-        <title th:text="${title}"></title>
         <link rel="icon" th:href="@{/images/albums.ico}" type="image/x-icon">
+        <title th:text="${title}"></title>
         <link rel="stylesheet" th:href="@{/css/albums.css}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css}" rel="stylesheet">
+        <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js}"></script>
+        <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.15.2/css/all.css}" />
+        <style>body{background-color: oldlace}</style>
     </head>
 
-    <nav th:fragment="menu">
-        <h1><a th:href="@{/}">DE ALBUMS DIE MIJN LEVEN HEBBEN VERANDERD</a></h1>
-        <ul>
-            <li><a th:href="@{/}">Nieuw persoon toevoegen</a></li>
-            <li><a th:href="@{/}">Nieuw album toevoegen</a></li>
-        </ul>
+    <nav class="navbar navbar-expand-lg" th:fragment="menu">
+        <div class="container-fluid">
+            <h1><a th:href="@{/}">DE ALBUMS DIE MIJN LEVEN HEBBEN VERANDERD</a></h1>
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fas fa-user"></i></a>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" th:href="@{/}">Anonymous</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider"/>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" th:href="@{/}">Log out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
     </nav>
 
     <footer th:fragment="footer">

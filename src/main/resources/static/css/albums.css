@@ -1,17 +1,6 @@
-body {
-    background-color: oldlace;
-    font-family: sans-serif;
-}
-
-.fullwidth {
-    width: 100%;
-}
-
 nav {
-    display: flex;
     background-color: cadetblue;
-    justify-content: space-between;
-    padding: 0.5em;
+    padding-right: 100px;
 }
 
 nav a:visited, a:link, a:active {
@@ -25,26 +14,16 @@ nav h1 {
     font-size: xx-large;
 }
 
-nav ul {
-    margin-top: 2.5em;
-}
-
-nav li {
-    display: inline;
-}
-
-nav li a {
-    color: white;
-    font-family: "Bauhaus 93", serif;
-    padding: 0.5em;
-}
-
-nav li a:hover {
-    color: gold;
+i {
+    font-size: x-large;
 }
 
 p {
     margin: 10px;
+}
+
+main {
+    padding-bottom: 60px;
 }
 
 label span {
@@ -67,5 +46,13 @@ footer {
     position: fixed;
     left: 0;
     bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin-top: 1rem;
+}
+
+.fullwidth {
     width: 100%;
 }
