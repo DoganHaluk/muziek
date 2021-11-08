@@ -1,8 +1,6 @@
 package be.vdab.muziek.domain;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 import java.time.LocalTime;
 import java.util.Objects;
 

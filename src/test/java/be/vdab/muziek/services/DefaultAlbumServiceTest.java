@@ -25,23 +25,23 @@ public class DefaultAlbumServiceTest {
     private Album album;
 
     @BeforeEach
-    void  beforeEach(){
-        service=new DefaultAlbumService(repository);
+    void beforeEach() {
+        service = new DefaultAlbumService(repository);
         var artiest = new Artiest("test");
-        album=new Album(artiest,"test", 0);
+        album = new Album(artiest, "test", 0);
     }
 
     @Test
-    void wijzigScore(){
+    void wijzigScore() {
         when(repository.findById(1)).thenReturn(Optional.of(album));
-        service.wijzigScore(1,10);
+        service.wijzigScore(1, 10);
         assertThat(album.getScore()).isEqualTo(10);
         verify(repository).findById(1);
     }
 
     @Test
-    void wijzigScoreVoorOnbestaandeAlbum(){
-        assertThatExceptionOfType(AlbumNietGevondenException.class).isThrownBy(() ->service.wijzigScore(-1, 10));
+    void wijzigScoreVoorOnbestaandeAlbum() {
+        assertThatExceptionOfType(AlbumNietGevondenException.class).isThrownBy(() -> service.wijzigScore(-1, 10));
         verify(repository).findById(-1);
     }
 }

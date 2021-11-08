@@ -3,8 +3,10 @@
 <head th:replace="fragments::head(title='Pagina niet gevonden')"></head>
 <body>
 <nav th:replace="fragments::menu"></nav>
-<img th:src="@{/images/404.png}" alt="Page not found" class="fullwidth">
-<h2>We vinden de gevraagde pagina niet.</h2>
+<main>
+    <img th:src="@{/images/404.png}" alt="Page not found" class="fullwidth">
+    <h2>We vinden de gevraagde pagina niet.</h2>
+</main>
 <footer th:replace="fragments::footer"></footer>
 </body>
 </html>

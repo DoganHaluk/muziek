@@ -72,4 +72,8 @@ public class Album {
         }
         return som;
     }
+
+    public void addTrack(String naam, LocalTime tijd) {
+        tracks.add(new Track(naam, tijd));
+    }
 }

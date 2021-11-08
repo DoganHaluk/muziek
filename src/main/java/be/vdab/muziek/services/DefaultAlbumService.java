@@ -1,11 +1,13 @@
 package be.vdab.muziek.services;
 
 import be.vdab.muziek.domain.Album;
+import be.vdab.muziek.domain.Track;
 import be.vdab.muziek.exceptions.AlbumNietGevondenException;
 import be.vdab.muziek.repositories.AlbumRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +15,7 @@ import java.util.Optional;
 @Transactional
 class DefaultAlbumService implements AlbumService {
     private final AlbumRepository albumRepository;
+
 
     DefaultAlbumService(AlbumRepository albumRepository) {
         this.albumRepository = albumRepository;
@@ -33,5 +36,10 @@ class DefaultAlbumService implements AlbumService {
     @Override
     public void wijzigScore(long id, int score) {
         albumRepository.findById(id).orElseThrow(AlbumNietGevondenException::new).setScore(score);
+    }
+
+    @Override
+    public void toevoegTrack(long id, String naam, LocalTime tijd) {
+        albumRepository.findById(id).orElseThrow(AlbumNietGevondenException::new).addTrack(naam, tijd);
     }
 }

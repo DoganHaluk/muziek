@@ -10,6 +10,16 @@
         <ul>
             <li th:each="track:*{tracks}" th:object="${track}" th:text="|*{naam} (*{tijd})|"></li>
         </ul>
+        <form method="post" th:action="@{/album/{id}/track(id=${album.id})}" th:object="${trackForm}">
+            <label>Track:
+                <input th:field="*{naam}" type="text" class="rounded">
+                <span th:errors="*{naam}"></span>
+            </label>
+            <label>Tijd:
+                <input th:field="*{tijd}" type="text" class="rounded">
+            </label>
+            <button class="rounded">Toevoegen</button>
+        </form>
         <div>Totale tijd:
             <th:block th:text="${album.tijd}"></th:block>
         </div>

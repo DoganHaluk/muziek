@@ -2,6 +2,7 @@ package be.vdab.muziek.controllers;
 
 import be.vdab.muziek.exceptions.AlbumNietGevondenException;
 import be.vdab.muziek.forms.ScoreForm;
+import be.vdab.muziek.forms.TrackForm;
 import be.vdab.muziek.services.AlbumService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -26,19 +27,39 @@ class AlbumController {
     @GetMapping("{id}")
     public ModelAndView album(@PathVariable long id) {
         var modelAndView = new ModelAndView("album");
-        albumService.findById(id).ifPresent(album -> modelAndView.addObject(album).addObject(new ScoreForm(album.getScore())));
+        albumService.findById(id)
+                .ifPresent(album -> modelAndView
+                        .addObject(album)
+                        .addObject(new ScoreForm(album.getScore()))
+                        .addObject(new TrackForm("", null)));
         return modelAndView;
     }
 
     @PostMapping("{id}/score")
-    public ModelAndView wijzigScore(@PathVariable long id, @Valid ScoreForm form, Errors error, RedirectAttributes redirect) {
+    public ModelAndView wijzigScore(@PathVariable long id, @Valid ScoreForm scoreForm, Errors error, RedirectAttributes redirect) {
         if (error.hasErrors()) {
             var modelAndView = new ModelAndView("album");
             albumService.findById(id).ifPresent(album -> modelAndView.addObject(album));
             return modelAndView;
         }
         try {
-            albumService.wijzigScore(id, form.getScore());
+            albumService.wijzigScore(id, scoreForm.getScore());
+            redirect.addAttribute("id", id);
+            return new ModelAndView("redirect:/album/{id}");
+        } catch (AlbumNietGevondenException ex) {
+            return new ModelAndView("album");
+        }
+    }
+
+    @PostMapping("{id}/track")
+    public ModelAndView toevoegTrack(@PathVariable long id, @Valid TrackForm trackForm, Errors error, RedirectAttributes redirect) {
+        if (error.hasErrors()) {
+            var modelAndView = new ModelAndView("album");
+            albumService.findById(id).ifPresent(album -> modelAndView.addObject(album));
+            return modelAndView;
+        }
+        try {
+            albumService.toevoegTrack(id, trackForm.getNaam(), trackForm.getTijd());
             redirect.addAttribute("id", id);
             return new ModelAndView("redirect:/album/{id}");
         } catch (AlbumNietGevondenException ex) {
