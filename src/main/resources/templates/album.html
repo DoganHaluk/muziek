@@ -12,11 +12,11 @@
         </ul>
         <form method="post" th:action="@{/album/{id}/track(id=${album.id})}" th:object="${trackForm}">
             <label>Track:
-                <input th:field="*{naam}" type="text" class="rounded">
+                <input th:field="*{naam}" type="text" class="rounded" required>
                 <span th:errors="*{naam}"></span>
             </label>
             <label>Tijd:
-                <input th:field="*{tijd}" type="text" class="rounded">
+                <input th:field="*{tijd}" type="text" class="rounded" placeholder="hh:mm:ss">
             </label>
             <button class="rounded">Toevoegen</button>
         </form>

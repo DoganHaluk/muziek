@@ -31,7 +31,7 @@ class AlbumController {
                 .ifPresent(album -> modelAndView
                         .addObject(album)
                         .addObject(new ScoreForm(album.getScore()))
-                        .addObject(new TrackForm("", null)));
+                        .addObject(new TrackForm("", "")));
         return modelAndView;
     }
 
