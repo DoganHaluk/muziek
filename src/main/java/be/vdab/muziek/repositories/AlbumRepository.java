@@ -9,4 +9,6 @@ public interface AlbumRepository {
     List<Album> findAll();
 
     Optional<Album> findById(long id);
+
+    void delete(long id);
 }

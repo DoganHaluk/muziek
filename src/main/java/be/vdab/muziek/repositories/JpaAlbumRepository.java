@@ -26,4 +26,9 @@ public class JpaAlbumRepository implements AlbumRepository {
     public Optional<Album> findById(long id) {
         return Optional.ofNullable(manager.find(Album.class, id));
     }
+
+    @Override
+    public void delete(long id) {
+        findById(id).ifPresent(album ->manager.remove(album));
+    }
 }

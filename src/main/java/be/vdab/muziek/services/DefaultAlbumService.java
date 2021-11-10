@@ -42,4 +42,9 @@ class DefaultAlbumService implements AlbumService {
     public void toevoegTrack(long id, String naam, LocalTime tijd) {
         albumRepository.findById(id).orElseThrow(AlbumNietGevondenException::new).addTrack(naam, tijd);
     }
+
+    @Override
+    public void delete(long id) {
+        albumRepository.delete(id);
+    }
 }

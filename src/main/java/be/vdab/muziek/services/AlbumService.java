@@ -15,4 +15,6 @@ public interface AlbumService {
     void wijzigScore(long id, int score);
 
     void toevoegTrack(long id, String naam, LocalTime tijd);
+
+    void delete(long id);
 }
