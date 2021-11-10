@@ -44,7 +44,7 @@ class AlbumController {
         }
         try {
             albumService.wijzigScore(id, scoreForm.getScore());
-            redirect.addAttribute("id", id);
+            redirect.addAttribute("idScoreGewijzigd", id);
             return new ModelAndView("redirect:/album/{id}");
         } catch (AlbumNietGevondenException ex) {
             return new ModelAndView("album");
@@ -52,7 +52,7 @@ class AlbumController {
     }
 
     @PostMapping("{id}/track")
-    public ModelAndView toevoegTrack(@PathVariable long id, @Valid TrackForm trackForm, Errors error, RedirectAttributes redirect) {
+    public ModelAndView toevoegTrack(@PathVariable long id, @Valid TrackForm trackForm, Errors error) {
         if (error.hasErrors()) {
             var modelAndView = new ModelAndView("album");
             albumService.findById(id).ifPresent(album -> modelAndView.addObject(album));
@@ -60,7 +60,6 @@ class AlbumController {
         }
         try {
             albumService.toevoegTrack(id, trackForm.getNaam(), trackForm.getTijd());
-            redirect.addAttribute("id", id);
             return new ModelAndView("redirect:/album/{id}");
         } catch (AlbumNietGevondenException ex) {
             return new ModelAndView("album");

@@ -30,6 +30,7 @@
             <span th:errors="*{score}"></span>
         </label>
         <button class="rounded">Wijzigen</button>
+        <div th:if="${param.idScoreGewijzigd}"></div>
     </form>
 </main>
 <footer th:replace="fragments::footer"></footer>
