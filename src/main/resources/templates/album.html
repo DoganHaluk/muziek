@@ -6,7 +6,12 @@
 <main>
     <h1 th:if="not ${album}" th:text="|Album ${id} niet gevonden.|"></h1>
     <div th:if="${album}" th:object="${album}">
-        <h2 th:text="|*{artiest.naam} - *{naam}|"></h2>
+        <div class="delete">
+            <h2 th:text="|*{artiest.naam} - *{naam}|"></h2>
+            <form method="post" th:action="@{/album/{id}/verwijder(id=${album.id})}">
+                <button class="rounded">Verwijderen</button>
+            </form>
+        </div>
         <ul>
             <li th:each="track:*{tracks}" th:object="${track}" th:text="|*{naam} (*{tijd})|"></li>
         </ul>

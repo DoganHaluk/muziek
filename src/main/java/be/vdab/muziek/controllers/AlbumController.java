@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("album")
@@ -64,5 +65,11 @@ class AlbumController {
         } catch (AlbumNietGevondenException ex) {
             return new ModelAndView("album");
         }
+    }
+
+    @PostMapping("{id}/verwijder")
+    public String verwijderAlbum(@PathVariable long id) {
+        albumService.delete(id);
+        return "redirect:/";
     }
 }
