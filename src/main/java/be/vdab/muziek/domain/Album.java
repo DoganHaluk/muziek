@@ -17,14 +17,18 @@ public class Album {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "artiestId")
     private Artiest artiest;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "gebruikerId")
+    private Gebruiker gebruiker;
     private String naam;
     private int score;
     @ElementCollection
     @CollectionTable(name = "tracks", joinColumns = @JoinColumn(name = "albumId"))
     private Set<Track> tracks;
 
-    public Album(Artiest artiest, String naam, int score) {
+    public Album(Artiest artiest, Gebruiker gebruiker, String naam, int score) {
         setArtiest(artiest);
+        setGebruiker(gebruiker);
         this.naam = naam;
         this.score = score;
         this.tracks = new LinkedHashSet<>();
@@ -41,6 +45,10 @@ public class Album {
         return artiest;
     }
 
+    public Gebruiker getGebruiker() {
+        return gebruiker;
+    }
+
     public String getNaam() {
         return naam;
     }
@@ -54,6 +62,13 @@ public class Album {
             artiest.add(this);
         }
         this.artiest = artiest;
+    }
+
+    public void setGebruiker(Gebruiker gebruiker) {
+        if (!gebruiker.getAlbums().contains(this)) {
+            gebruiker.add(this);
+        }
+        this.gebruiker = gebruiker;
     }
 
     public Set<Track> getTracks() {

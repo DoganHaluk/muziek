@@ -8,7 +8,7 @@ public class TrackForm {
     @NotBlank
     private final String naam;
     private final String tijd;
-    private final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_TIME;
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     public TrackForm(String naam, String tijd) {
         this.naam = naam;
@@ -21,7 +21,7 @@ public class TrackForm {
 
     public LocalTime getTijd() {
         if (tijd.equals("")) {
-            return LocalTime.parse("00:00:00", formatter);
+            return null;
         }
         return LocalTime.parse(tijd, formatter);
     }

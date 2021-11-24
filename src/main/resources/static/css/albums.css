@@ -34,7 +34,7 @@ main {
     margin: 5px;
 }
 
-label span {
+error{
     background-color: red;
     border-bottom-right-radius: 0.5em;
     border-top-left-radius: 0.5em;

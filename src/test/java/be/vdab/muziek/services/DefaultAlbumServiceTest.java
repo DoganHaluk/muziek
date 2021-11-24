@@ -2,6 +2,7 @@ package be.vdab.muziek.services;
 
 import be.vdab.muziek.domain.Album;
 import be.vdab.muziek.domain.Artiest;
+import be.vdab.muziek.domain.Gebruiker;
 import be.vdab.muziek.exceptions.AlbumNietGevondenException;
 import be.vdab.muziek.repositories.AlbumRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,7 +29,8 @@ public class DefaultAlbumServiceTest {
     void beforeEach() {
         service = new DefaultAlbumService(repository);
         var artiest = new Artiest("test");
-        album = new Album(artiest, "test", 0);
+        var gebruiker = new Gebruiker("test");
+        album = new Album(artiest, gebruiker,"test", 0);
     }
 
     @Test
