@@ -4,6 +4,6 @@
                  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd"
                  version="2.1">
     <named-query name="Album.findAll">
-        <query>SELECT a FROM Album a ORDER BY a.naam</query>
+        <query>SELECT a FROM Album a ORDER BY a.id</query>
     </named-query>
 </entity-mappings>

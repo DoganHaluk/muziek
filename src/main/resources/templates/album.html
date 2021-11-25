@@ -8,10 +8,28 @@
     <div th:if="${album}" th:object="${album}">
         <div class="delete">
             <h2 th:text="|*{artiest.naam} - *{naam}|"></h2>
-            <form method="post" th:action="@{/album/{id}/verwijder(id=${album.id})}">
-                <button class="rounded">Verwijderen</button>
-            </form>
+            <button class="rounded" data-bs-toggle="modal" data-bs-target="#waarschuwingModal">Verwijderen</button>
         </div>
+
+        <div class="modal fade" id="waarschuwingModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" style="color: red">Waarschuwing!</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        Weet je zeker dat je een album wilt verwijderen?
+                    </div>
+                    <div class="modal-footer">
+                        <form method="post" th:action="@{/album/{id}/verwijder(id=${album.id})}">
+                            <button class="rounded" data-bs-dismiss="modal">Verwijderen</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <ul>
             <li th:each="track:*{tracks}" th:object="${track}" th:text="|*{naam} (*{tijd})|"></li>
         </ul>
