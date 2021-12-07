@@ -15,11 +15,11 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" style="color: red">Waarschuwing!</h4>
+                        <h4 class="modal-title" style="color: red">Aandacht!</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        Weet je zeker dat je een album wilt verwijderen?
+                        Weet je zeker dat je dit album wilt verwijderen?
                     </div>
                     <div class="modal-footer">
                         <form method="post" th:action="@{/album/{id}/verwijder(id=${album.id})}">
@@ -39,7 +39,7 @@
                 <span th:errors="*{naam}"></span>
             </label>
             <label>Tijd:
-                <input th:field="*{tijd}" type="text" class="rounded" placeholder="hh:mm:ss">
+                <input th:field="*{tijd}" type="text" class="rounded" placeholder="hh:mm:ss" required>
             </label>
             <button class="rounded">Toevoegen</button>
         </form>
