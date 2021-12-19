@@ -1,6 +1,7 @@
 package be.vdab.muziek.controllers;
 
 import be.vdab.muziek.services.AlbumService;
+import be.vdab.muziek.services.GebruikerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,13 +11,15 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/")
 class IndexController {
     private final AlbumService albumService;
+    private final GebruikerService gebruikerService;
 
-    IndexController(AlbumService albumService) {
+    IndexController(AlbumService albumService, GebruikerService gebruikerService) {
         this.albumService = albumService;
+        this.gebruikerService = gebruikerService;
     }
 
     @GetMapping
     public ModelAndView index(){
-        return new ModelAndView("index", "albums", albumService.findAll());
+        return new ModelAndView("index", "gebruikersenalbums", albumService.findGebruikersEnAlbums());
     }
 }

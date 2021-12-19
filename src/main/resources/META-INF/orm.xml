@@ -6,4 +6,7 @@
     <named-query name="Album.findAll">
         <query>SELECT a FROM Album a ORDER BY a.id</query>
     </named-query>
+    <named-query name="Gebruiker.findAll">
+        <query>SELECT g FROM Gebruiker g ORDER BY g.id</query>
+    </named-query>
 </entity-mappings>

@@ -4,11 +4,14 @@
 <body>
 <nav th:replace="fragments::menu"></nav>
 <main>
-    <ul class="albums">
-        <li th:each="album:${albums}" th:object="${album}">
-            <a th:text="|*{artiest.naam} - *{naam}|" th:href="@{/album/{id}(id=*{id})}"></a>
-        </li>
-    </ul>
+    <th:block th:each="gebruiker:${gebruikersenalbums}" th:object="${gebruiker}">
+        <p th:text="*{gebruikersnaam}"></p>
+        <ul>
+            <li th:each="album:${gebruikersenalbums}" th:object="${album}" th:text="*{albumsnaam}">
+                <a th:text="|*{artiest.naam} - *{naam}|" th:href="@{/album/{id}(id=*{id})}"></a>
+            </li>
+        </ul>
+    </th:block>
 </main>
 <footer th:replace="fragments::footer"></footer>
 </body>

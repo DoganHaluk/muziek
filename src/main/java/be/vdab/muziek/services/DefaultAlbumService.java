@@ -3,6 +3,7 @@ package be.vdab.muziek.services;
 import be.vdab.muziek.domain.Album;
 import be.vdab.muziek.domain.Track;
 import be.vdab.muziek.exceptions.AlbumNietGevondenException;
+import be.vdab.muziek.projections.GebruikerEnAlbum;
 import be.vdab.muziek.repositories.AlbumRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,15 +17,8 @@ import java.util.Optional;
 class DefaultAlbumService implements AlbumService {
     private final AlbumRepository albumRepository;
 
-
     DefaultAlbumService(AlbumRepository albumRepository) {
         this.albumRepository = albumRepository;
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<Album> findAll() {
-        return albumRepository.findAll();
     }
 
     @Override
@@ -46,5 +40,10 @@ class DefaultAlbumService implements AlbumService {
     @Override
     public void delete(long id) {
         albumRepository.delete(id);
+    }
+
+    @Override
+    public List<GebruikerEnAlbum> findGebruikersEnAlbums() {
+        return albumRepository.findGebruikersEnAlbums();
     }
 }

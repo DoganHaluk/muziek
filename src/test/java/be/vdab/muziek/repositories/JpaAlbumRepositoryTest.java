@@ -30,7 +30,7 @@ class JpaAlbumRepositoryTest extends AbstractTransactionalJUnit4SpringContextTes
         manager.clear();
         assertThat(repository.findAll())
                 .hasSize(countRowsInTable(ALBUMS))
-                .extracting(Album::getNaam)
+                .extracting(Album::getId)
                 .isSorted();
         assertThat(repository.findAll())
                 .extracting(Album::getArtiest)

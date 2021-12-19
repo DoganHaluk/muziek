@@ -1,6 +1,7 @@
 package be.vdab.muziek.repositories;
 
 import be.vdab.muziek.domain.Album;
+import be.vdab.muziek.projections.GebruikerEnAlbum;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -30,5 +31,10 @@ public class JpaAlbumRepository implements AlbumRepository {
     @Override
     public void delete(long id) {
         findById(id).ifPresent(album ->manager.remove(album));
+    }
+
+    @Override
+    public List<GebruikerEnAlbum> findGebruikersEnAlbums() {
+        return manager.createQuery("select new be.vdab.muziek.projections.GebruikerEnAlbum(g.naam, a.naam) from Album a inner join Gebruiker g on a.gebruiker.id=g.id", GebruikerEnAlbum.class).getResultList();
     }
 }
