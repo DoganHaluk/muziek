@@ -14,6 +14,15 @@ nav h1 {
     font-size: xx-large;
 }
 
+h4 a{
+    color: black;
+    text-decoration: none;
+}
+
+h4 a:hover{
+    color: gold;
+}
+
 i {
     font-size: x-large;
 }

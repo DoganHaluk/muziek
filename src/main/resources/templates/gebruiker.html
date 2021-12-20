@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::head(title='Mijn beste albums')"></head>
+<body>
+<nav th:replace="fragments::menu"></nav>
+<main>
+    <h4>De Pagina van
+        <th:block th:text="${gebruiker.get().naam}"></th:block>
+    </h4>
+    <ul>
+        <li th:each="album:${gebruiker.get().getAlbums()}" th:object="${album}">
+            <a th:text="|*{artiest.naam} - *{naam}|" th:href="@{/album/{id}(id=*{id})}"></a>
+        </li>
+    </ul>
+</main>
+<footer th:replace="fragments::footer"></footer>
+</body>
+</html>
