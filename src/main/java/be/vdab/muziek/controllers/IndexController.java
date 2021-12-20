@@ -20,6 +20,7 @@ class IndexController {
 
     @GetMapping
     public ModelAndView index(){
-        return new ModelAndView("index", "gebruikersenalbums", albumService.findGebruikersEnAlbums());
+        var modelAndView =new ModelAndView("index", "gebruikers", gebruikerService.findAll());
+        return modelAndView.addObject("albums", albumService.findAll());
     }
 }

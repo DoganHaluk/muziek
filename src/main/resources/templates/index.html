@@ -4,10 +4,10 @@
 <body>
 <nav th:replace="fragments::menu"></nav>
 <main>
-    <th:block th:each="gebruiker:${gebruikersenalbums}" th:object="${gebruiker}">
-        <p th:text="*{gebruikersnaam}"></p>
+    <th:block th:each="gebruiker:${gebruikers}" th:object="${gebruiker}">
+        <h4>De Lijst van <th:block th:text="*{naam}"></th:block></h4>
         <ul>
-            <li th:each="album:${gebruikersenalbums}" th:object="${album}" th:text="*{albumsnaam}">
+            <li th:each="album:${gebruiker.getAlbums()}" th:object="${album}">
                 <a th:text="|*{artiest.naam} - *{naam}|" th:href="@{/album/{id}(id=*{id})}"></a>
             </li>
         </ul>

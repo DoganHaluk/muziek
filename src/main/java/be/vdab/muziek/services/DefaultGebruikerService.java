@@ -1,7 +1,6 @@
 package be.vdab.muziek.services;
 
 import be.vdab.muziek.domain.Gebruiker;
-import be.vdab.muziek.projections.GebruikerEnAlbum;
 import be.vdab.muziek.repositories.GebruikerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

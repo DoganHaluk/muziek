@@ -11,6 +11,4 @@ public interface GebruikerService {
     List<Gebruiker> findAll();
 
     Optional<Gebruiker> findById(long id);
-
-
 }
