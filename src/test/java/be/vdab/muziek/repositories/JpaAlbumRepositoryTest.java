@@ -13,7 +13,7 @@ import javax.persistence.EntityManager;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest(showSql = false)
-@Sql({"/insertArtiest.sql", "/insertAlbum.sql"})
+@Sql({"/insertGebruiker.sql", "/insertArtiest.sql", "/insertAlbum.sql"})
 @Import(JpaAlbumRepository.class)
 class JpaAlbumRepositoryTest extends AbstractTransactionalJUnit4SpringContextTests {
     private static final String ALBUMS = "albums";
@@ -52,5 +52,13 @@ class JpaAlbumRepositoryTest extends AbstractTransactionalJUnit4SpringContextTes
     @Test
     void findByOnbestandeId() {
         assertThat(repository.findById(-1)).isNotPresent();
+    }
+
+    @Test
+    void delete() {
+        var id = idVanTestAlbum();
+        repository.delete(id);
+        manager.flush();
+        assertThat(countRowsInTableWhere(ALBUMS, "id= " + id)).isZero();
     }
 }

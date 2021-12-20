@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest(showSql = false)
 @Import(DefaultAlbumService.class)
 @ComponentScan(value = "be.vdab.muziek.repositories", resourcePattern = "JpaAlbumRepository.class")
-@Sql({"/insertArtiest.sql", "/insertAlbum.sql"})
+@Sql({"/insertGebruiker.sql", "/insertArtiest.sql", "/insertAlbum.sql"})
 class DefaultAlbumServiceIntegrationTest extends AbstractTransactionalJUnit4SpringContextTests {
     private final static String ALBUMS = "albums";
     private final DefaultAlbumService service;

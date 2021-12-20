@@ -16,7 +16,7 @@ public class Gebruiker {
     @OneToMany(mappedBy = "gebruiker")
     private List<Album> albums;
 
-    public Gebruiker(String naam) {
+    public Gebruiker(String naam, String paswoord) {
         this.naam = naam;
         this.albums = new LinkedList<>();
     }

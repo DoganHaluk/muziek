@@ -29,7 +29,7 @@ public class DefaultAlbumServiceTest {
     void beforeEach() {
         service = new DefaultAlbumService(repository);
         var artiest = new Artiest("test");
-        var gebruiker = new Gebruiker("test");
+        var gebruiker = new Gebruiker("test", "test");
         album = new Album(artiest, gebruiker,"test", 0);
     }
 
