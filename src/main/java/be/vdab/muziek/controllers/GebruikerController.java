@@ -20,8 +20,8 @@ class GebruikerController {
     }
 
     @GetMapping("{id}")
-    public ModelAndView gebruiker(@PathVariable long id){
-        var modelAndView =new ModelAndView("gebruiker", "gebruiker", gebruikerService.findById(id));
+    public ModelAndView gebruiker(@PathVariable long id) {
+        var modelAndView = new ModelAndView("gebruiker", "gebruiker", gebruikerService.findById(id));
         return modelAndView.addObject("albums", albumService.findAll());
     }
 }
