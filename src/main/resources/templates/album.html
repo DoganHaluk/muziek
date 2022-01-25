@@ -3,7 +3,7 @@
 <head th:replace="fragments::head(title='Album')"></head>
 <body>
 <nav th:replace="fragments::menu"></nav>
-<main>
+<div class="container">
     <h1 th:if="not ${album}" th:text="|Album ${id} niet gevonden.|"></h1>
     <div th:if="${album}" th:object="${album}">
         <div class="delete">
@@ -55,7 +55,7 @@
         <button class="rounded">Wijzigen</button>
         <div th:if="${param.idScoreGewijzigd}"></div>
     </form>
-</main>
+</div>
 <footer th:replace="fragments::footer"></footer>
 </body>
 </html>
