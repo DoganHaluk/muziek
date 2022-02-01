@@ -37,8 +37,8 @@ class AlbumController {
     }
 
     @PostMapping("{id}/score")
-    public ModelAndView wijzigScore(@PathVariable long id, @Valid ScoreForm scoreForm, Errors error, RedirectAttributes redirect) {
-        if (error.hasErrors()) {
+    public ModelAndView wijzigScore(@PathVariable long id, @Valid ScoreForm scoreForm, Errors errors, RedirectAttributes redirect) {
+        if (errors.hasErrors()) {
             var modelAndView = new ModelAndView("album");
             albumService.findById(id).ifPresent(album -> modelAndView.addObject(album));
             return modelAndView;
@@ -53,8 +53,8 @@ class AlbumController {
     }
 
     @PostMapping("{id}/track")
-    public ModelAndView toevoegTrack(@PathVariable long id, @Valid TrackForm trackForm, Errors error) {
-        if (error.hasErrors()) {
+    public ModelAndView toevoegTrack(@PathVariable long id, @Valid TrackForm trackForm, Errors errors) {
+        if (errors.hasErrors()) {
             var modelAndView = new ModelAndView("album");
             albumService.findById(id).ifPresent(album -> modelAndView.addObject(album));
             return modelAndView;

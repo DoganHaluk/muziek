@@ -34,9 +34,8 @@
             <li th:each="track:*{tracks}" th:object="${track}" th:text="|*{naam} (*{tijd})|"></li>
         </ul>
         <form method="post" th:action="@{/album/{id}/track(id=${album.id})}" th:object="${trackForm}">
-            <label>Track:
+            <label>Track:<span th:errors="*{naam}"></span>
                 <input th:field="*{naam}" type="text" class="rounded" required>
-                <span th:errors="*{naam}"></span>
             </label>
             <label>Tijd:
                 <input th:field="*{tijd}" type="text" class="rounded" placeholder="hh:mm:ss" required>
@@ -48,9 +47,8 @@
         </div>
     </div>
     <form method="post" th:action="@{/album/{id}/score(id=${album.id})}" th:object="${scoreForm}">
-        <label>Score:
+        <label>Score:<span th:errors="*{score}"></span>
             <input th:field="*{score}" type="number" min="0" max="10" class="rounded">
-            <span th:errors="*{score}"></span>
         </label>
         <button class="rounded">Wijzigen</button>
         <div th:if="${param.idScoreGewijzigd}"></div>
