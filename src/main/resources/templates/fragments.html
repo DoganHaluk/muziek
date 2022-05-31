@@ -31,6 +31,9 @@
                             <a class="dropdown-item" th:href="@{/login}" sec:authorize="isAnonymous()">Inloggen</a>
                         </li>
                         <li>
+                            <a class="dropdown-item" th:href="@{/nieuwe}" sec:authorize="isAnonymous()">Nieuwe gebruiker</a>
+                        </li>
+                        <li>
                             <form method="post" th:action="@{/logout}" sec:authorize="isAuthenticated()">
                                 <button class="dropdown-item">Uitloggen</button>
                             </form>
