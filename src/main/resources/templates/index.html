@@ -8,7 +8,7 @@
         <h4><a th:text="|De Lijst van *{naam}|" th:href="@{/gebruiker/{id}(id=*{id})}"></a></h4>
         <ul>
             <li th:each="album:${gebruiker.getAlbums()}" th:object="${album}">
-                <a th:text="|*{artiest.naam} - *{naam}|" th:href="@{/album/{id}(id=*{id})}"></a>
+                <a th:text="|*{artiest.naam} - *{naam}|" th:href="@{/gebruiker/{gebruikerId}/album/{albumId} (gebruikerId=*{gebruiker.id}, albumId=${album.id})}"></a>
             </li>
         </ul>
     </th:block>

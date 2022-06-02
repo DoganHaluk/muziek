@@ -37,7 +37,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.logout(logout -> logout.logoutSuccessUrl("/"));
         http.authorizeRequests(requests -> requests
                 .mvcMatchers("/", "/login").permitAll()
-                .mvcMatchers("/album/1", "/album/2", "/album/3", "/album/4", "/album/5", "/album/6", "/album/7", "/album/8", "/album/9", "/album/10", "/album/11", "/album/12", "/album/13").hasAuthority("1")
-                .mvcMatchers("/album/14", "/album/15", "/album/16", "/album/17", "/album/18", "/album/19", "/album/20", "/album/21", "/album/22", "/album/23").hasAuthority("2"));
+                .mvcMatchers("/gebruiker/1/**").hasAuthority("1")
+                .mvcMatchers("/gebruiker/2/**").hasAuthority("2")
+                .mvcMatchers("/gebruiker/3/**").hasAuthority("3")
+                .mvcMatchers("/gebruiker/4/**").hasAuthority("4")
+        );
     }
 }

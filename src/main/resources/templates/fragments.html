@@ -21,9 +21,9 @@
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                         <i class="fas fa-user"></i>
                     </a>
-                    <ul class="dropdown-menu shadow p-4 mb-4 bg-white">
+                    <ul class="dropdown-menu shadow mb-4 bg-white">
                         <li>
-                            <a class="dropdown-header" th:href="@{/}" sec:authorize="isAuthenticated()">
+                            <a class="dropdown-header" th:href="@{/gebruiker/{gebruikerId} (gebruikerId=*{#authentication.getAuthorities()})}" sec:authorize="isAuthenticated()">
                                 <th:block sec:authentication="name"></th:block>
                             </a>
                         </li>

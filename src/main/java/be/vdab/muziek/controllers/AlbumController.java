@@ -14,10 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.Optional;
 
 @Controller
-@RequestMapping("album")
+@RequestMapping("gebruiker/{gebruikerId}/album")
 class AlbumController {
     private final AlbumService albumService;
 
@@ -46,7 +45,7 @@ class AlbumController {
         try {
             albumService.wijzigScore(id, scoreForm.getScore());
             redirect.addAttribute("idScoreGewijzigd", id);
-            return new ModelAndView("redirect:/album/{id}");
+            return new ModelAndView("redirect:/gebruiker/{gebruikerId}/album/{id}");
         } catch (AlbumNietGevondenException ex) {
             return new ModelAndView("album");
         }
@@ -61,7 +60,7 @@ class AlbumController {
         }
         try {
             albumService.toevoegTrack(id, trackForm.getNaam(), trackForm.getTijd());
-            return new ModelAndView("redirect:/album/{id}");
+            return new ModelAndView("redirect:/gebruiker/{gebruikerId}/album/{id}");
         } catch (AlbumNietGevondenException ex) {
             return new ModelAndView("album");
         }
@@ -70,6 +69,6 @@ class AlbumController {
     @PostMapping("{id}/verwijder")
     public String verwijderAlbum(@PathVariable long id) {
         albumService.delete(id);
-        return "redirect:/";
+        return "redirect:/gebruiker/{gebruikerId}";
     }
 }

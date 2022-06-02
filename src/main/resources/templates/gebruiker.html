@@ -9,7 +9,7 @@
     </h4>
     <ul>
         <li th:each="album:${gebruiker.get().getAlbums()}" th:object="${album}">
-            <a th:text="|*{artiest.naam} - *{naam}|" th:href="@{/album/{id}(id=*{id})}"></a>
+            <a th:text="|*{artiest.naam} - *{naam}|" th:href="@{/gebruiker/{gebruikerId}/album/{albumId} (gebruikerId=*{gebruiker.id}, albumId=${album.id})}"></a>
         </li>
     </ul>
 </div>
