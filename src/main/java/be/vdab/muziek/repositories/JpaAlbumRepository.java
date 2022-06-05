@@ -31,4 +31,9 @@ public class JpaAlbumRepository implements AlbumRepository {
     public void delete(long id) {
         findById(id).ifPresent(album -> manager.remove(album));
     }
+
+    @Override
+    public void create(Album album) {
+        manager.persist(album);
+    }
 }

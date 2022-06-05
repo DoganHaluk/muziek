@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class DefaultGebruikerService implements GebruikerService{
+public class DefaultGebruikerService implements GebruikerService {
     private final GebruikerRepository gebruikerRepository;
     private final PasswordEncoder passwordEncoder;
 

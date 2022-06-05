@@ -16,4 +16,6 @@ public interface AlbumService {
     void toevoegTrack(long id, String naam, LocalTime tijd);
 
     void delete(long id);
+
+    void create(Album album);
 }

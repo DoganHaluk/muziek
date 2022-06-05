@@ -45,4 +45,9 @@ class DefaultAlbumService implements AlbumService {
     public void delete(long id) {
         albumRepository.delete(id);
     }
+
+    @Override
+    public void create(Album album) {
+        albumRepository.create(album);
+    }
 }

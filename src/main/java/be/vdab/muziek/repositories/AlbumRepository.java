@@ -11,4 +11,6 @@ public interface AlbumRepository {
     Optional<Album> findById(long id);
 
     void delete(long id);
+
+    void create(Album album);
 }

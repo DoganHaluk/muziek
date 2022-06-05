@@ -26,11 +26,10 @@ public class Album {
     @CollectionTable(name = "tracks", joinColumns = @JoinColumn(name = "albumId"))
     private Set<Track> tracks;
 
-    public Album(Artiest artiest, Gebruiker gebruiker, String naam, int score) {
+    public Album(Artiest artiest, Gebruiker gebruiker, String naam) {
         setArtiest(artiest);
         setGebruiker(gebruiker);
         this.naam = naam;
-        this.score = score;
         this.tracks = new LinkedHashSet<>();
     }
 

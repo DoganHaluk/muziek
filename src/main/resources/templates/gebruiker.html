@@ -12,6 +12,16 @@
             <a th:text="|*{artiest.naam} - *{naam}|" th:href="@{/gebruiker/{gebruikerId}/album/{albumId} (gebruikerId=*{gebruiker.id}, albumId=${album.id})}"></a>
         </li>
     </ul>
+
+    <form method="post" th:action="@{/gebruiker/{gebruikerId}/album (gebruikerId=${gebruiker.get().id})}" th:object="${albumForm}">
+        <label>Album toevoegen:<span th:errors="*{albumNaam}"></span>
+            <input th:field="*{albumNaam}" type="text" class="rounded" required>
+        </label>
+        <label>Artiest:
+            <input th:field="*{artiestNaam}" type="text" class="rounded" required>
+        </label>
+        <button class="rounded">Toevoegen</button>
+    </form>
 </div>
 <footer th:replace="fragments::footer"></footer>
 </body>
