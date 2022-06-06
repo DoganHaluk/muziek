@@ -5,6 +5,8 @@ import be.vdab.muziek.repositories.ArtiestRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class DefaultArtiestService implements ArtiestService {
@@ -21,7 +23,13 @@ public class DefaultArtiestService implements ArtiestService {
 
     @Override
     @Transactional(readOnly = true)
-    public Artiest findByNaam(String naam){
+    public Artiest findByNaam(String naam) {
         return artiestRepository.findByName(naam);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Artiest> findAll() {
+        return artiestRepository.findAll();
     }
 }

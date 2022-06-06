@@ -4,6 +4,7 @@ import be.vdab.muziek.domain.Artiest;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 @Repository
 public class JpaArtiestRepository implements ArtiestRepository {
@@ -23,5 +24,10 @@ public class JpaArtiestRepository implements ArtiestRepository {
         return manager.createNamedQuery("Artiest.findByNaam", Artiest.class)
                 .setParameter("naam", naam)
                 .getSingleResult();
+    }
+
+    @Override
+    public List<Artiest> findAll() {
+        return manager.createNamedQuery("Artiest.findAll", Artiest.class).getResultList();
     }
 }

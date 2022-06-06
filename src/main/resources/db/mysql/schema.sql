@@ -6,7 +6,7 @@ use muziek;
 
 create table artiesten (
   id int unsigned not null auto_increment primary key,
-  naam varchar(255) not null
+  naam varchar(255) not null unique
 );
 
 insert into artiesten(naam) values
@@ -283,4 +283,4 @@ create user if not exists cursist identified by 'cursist';
 grant select,insert,delete on artiesten to cursist;
 grant select,insert,delete on gebruikers to cursist;
 grant select,insert,update,delete on albums to cursist;
-grant select,insert on tracks to cursist;
+grant select,insert,delete on tracks to cursist;

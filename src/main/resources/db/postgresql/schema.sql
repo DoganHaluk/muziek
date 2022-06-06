@@ -36,7 +36,7 @@ INSERT INTO "public"."albums"("id", "artiestid", "gebruikerid", "naam", "score")
 INSERT INTO "public"."albums"("id", "artiestid", "gebruikerid", "naam", "score") VALUES (23, 15, 2, 'Appetite For Destruction', 7);
 
 DROP TABLE IF EXISTS "public"."artiesten" CASCADE;
-CREATE TABLE "public"."artiesten" ("id" BIGSERIAL NOT NULL, "naam" VARCHAR(255)  NOT NULL);
+CREATE TABLE "public"."artiesten" ("id" BIGSERIAL NOT NULL, "naam" VARCHAR(255) NOT NULL UNIQUE);
 ALTER SEQUENCE "public"."artiesten_id_seq" RESTART WITH 16 INCREMENT BY 1;
 DROP INDEX IF EXISTS "PRIMARY00000";
 ALTER TABLE "public"."artiesten" ADD CONSTRAINT "PRIMARY00000" PRIMARY KEY ("id");

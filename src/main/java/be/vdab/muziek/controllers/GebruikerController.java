@@ -35,8 +35,11 @@ class GebruikerController {
 
     @PostMapping("{id}/album")
     public String voegNieuweAlbumToe(@PathVariable long id, @Valid AlbumForm albumForm) {
-        artiestService.create(new Artiest(albumForm.getArtiestNaam()));
-        Album album = new Album(artiestService.findByNaam(albumForm.getArtiestNaam()), gebruikerService.findById(id).orElseThrow(GebruikerNietGevondenException::new), albumForm.getAlbumNaam());
+        String artiestNaam = albumForm.getArtiestNaam();
+        if (artiestService.findAll().stream().noneMatch(artiest -> artiest.getNaam().equals(artiestNaam))) {
+            artiestService.create(new Artiest(albumForm.getArtiestNaam()));
+        }
+        Album album = new Album(artiestService.findByNaam(artiestNaam), gebruikerService.findById(id).orElseThrow(GebruikerNietGevondenException::new), albumForm.getAlbumNaam());
         albumService.create(album);
         return "redirect:/gebruiker/{id}";
     }

@@ -5,7 +5,6 @@ import java.util.*;
 
 @Entity
 @Table(name = "artiesten")
-@NamedQuery(name = "Artiest.findByNaam", query = "select a from Artiest a where a.naam=:naam")
 public class Artiest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
